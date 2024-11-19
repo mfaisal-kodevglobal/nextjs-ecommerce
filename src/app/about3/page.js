@@ -1,6 +1,8 @@
 'use client'
 import { useState, useEffect } from 'react'
 import Link from 'next/link';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 export default function About3() {
     
@@ -30,6 +32,8 @@ export default function About3() {
 
   return (
     <main className="flex9 min-h-screen9 flex-col9 items-center99 justify-between9 p-59">
+         
+          
       <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
         {products.map((pro) => {
             let prod_url = "http://localhost:3000/about4/"+pro.id;
@@ -71,8 +75,7 @@ export default function About3() {
             </Link>    
               <div>
                 {/* Add to Cart button */}
-                <button 
-                  onClick={() => handleAddToCart(pro)} 
+                <Button variant="contained" onClick={() => handleAddToCart(pro)} 
                   style={{
                     padding: "3px 8px",
                     backgroundColor: "black",
@@ -80,10 +83,7 @@ export default function About3() {
                     border: "none",
                     borderRadius: "4px",
                     cursor: "pointer",
-                  }}
-                >
-                  Add to Cart
-                </button>
+                  }}>Add to Cart</Button>
               </div>
             </div>
           );

@@ -2,6 +2,8 @@
 // import { useRouter } from 'next/router'
 import { useState, useEffect } from "react"
 // import { Radio, RadioGroup } from '@headlessui/react'
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 const reviews = { href: '#', average: 4, totalCount: 117 }
 
@@ -32,6 +34,7 @@ export default function About4({params}) {
     
     return (
         <div>
+          
             <h1>Product Details</h1>
             {/* <div class="grid grid-cols-2 gap-4 place-content-stretch h-48 ...">
                 <div>01</div>
@@ -165,13 +168,9 @@ export default function About4({params}) {
               {/* Sizes */}
               
 
-              <button
-                type="submit"
-                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-              >
-                Add to bag
-              </button>
+              <Button type="submit" variant="contained" className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Add to bag</Button>  
             </form>
+            
           </div>
 
           <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
