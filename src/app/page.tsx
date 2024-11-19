@@ -15,7 +15,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-           Nexjs-Ecommerce Website By{' '}
+           Nexjs-Ecommerce Website By Muhammad Faisal{' '}
             <Image
               src="/vercel.svg"
               alt="Vercel Logo"
