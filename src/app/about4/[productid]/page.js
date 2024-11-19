@@ -17,13 +17,12 @@ export default function About4({params}) {
     const productid = params.productid;
     const [product, setproduct] = useState(null);
 
-    if(productid > 0){
         useEffect(()=>{
             fetch("https://fakestoreapi.com/products/"+productid).then((res) => res.json()).then((json) => {
                 setproduct(json);
             }).catch((error) => {console.error("Error fetching single product", error)});
         },[]);
-    }
+    
 
     if (!product) {
              return <div>Loading...</div>;
