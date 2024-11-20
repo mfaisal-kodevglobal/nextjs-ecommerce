@@ -36,7 +36,7 @@ export default function About3() {
           
       <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
         {products.map((pro) => {
-          let prod_url = `${process.env.VERCEL_URL}/about4/${pro.id}`;
+          let prod_url = `${process.env.NEXT_PUBLIC_BASE_URL}/about4/${pro.id}`;
 
           return (
             <div key={pro.id} className="product-card" style={{
