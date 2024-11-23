@@ -1,5 +1,5 @@
 {
-  "name": "nextjs-ecommerce",
+  "name": "ecommerce-q2-dev",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,10 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "^11.13.3",
-    "@emotion/styled": "^11.13.0",
-    "@mui/material": "^6.1.7",
-    "next": "14.0.3",
+    "'": "file:emotion/core@10.1.1'",
+    "@mui/material": "^6.1.8",
+    "embla-carousel-react": "^8.5.1",
+    "framer-motion": "^11.11.17",
+    "next": "^14.2.18",
     "react": "^18",
     "react-dom": "^18"
   },

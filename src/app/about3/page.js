@@ -1,109 +1,77 @@
-'use client'
-import { useState, useEffect } from 'react'
+'use client';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
 
 export default function About3() {
-    
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]); // State to keep track of cart items
 
   useEffect(() => {
     // Fetch the data once the component mounts
     fetch('https://fakestoreapi.com/products?sort=asc')
-      .then(res => res.json())
-      .then(json => {
+      .then((res) => res.json())
+      .then((json) => {
         setProducts(json);  // Update the state with the fetched products
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error fetching products:", error);
       });
   }, []);
 
-  const handleAddToCart = (product) => {
-    setCart((prevCart) => [...prevCart, product]);
-    alert(`${product.title} has been added to the cart!`); // Optional: Show a message when added
-  };
-
-  if (!products) {
+  if (!products.length) {
     return <div>Loading...</div>;
   }
 
+  const prod_banner = `${process.env.NEXT_PUBLIC_BASE_URL}/images/envelope-cupboards-shape_23-2148518457.jpg`; // Declaring the banner outside JSX
+
+  const handleAddToCart = (product) => {
+    setCart([...cart, product]);
+    alert(`${product.title} added to the cart!`); // A basic alert (you can customize this)
+  };
+
   return (
-    <main className="flex9 min-h-screen9 flex-col9 items-center99 justify-between9 p-59">
-         
-          
-      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
+    <main className="flex flex-col items-center justify-between p-6">
+      {/* Product Banner */}
+      <div className="w-full max-w-screen-xl mx-auto">
+        <img
+          src={prod_banner}
+          alt="Product Banner"
+          className="w-full h-auto object-cover rounded-lg"
+        />
+      </div>
+
+      {/* Product Listing */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 mt-6 w-full">
         {products.map((pro) => {
-          let prod_url = `${process.env.NEXT_PUBLIC_BASE_URL}/about4/${pro.id}`;
+          const prod_url = `${process.env.NEXT_PUBLIC_BASE_URL}/about4/${pro.id}`;
 
           return (
-            <div key={pro.id} className="product-card" style={{
-              width: "15%",
-              border: "1px solid lightgray",
-              padding: "10px",
-              margin: "20px",
-              boxShadow: "15px 15px 15px 10px gray",
-              borderRadius: "5px",
-              textAlign: "center",
-            }}>
-            <Link href={prod_url}>
-              <div style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                height: "100px",  // Fixed height to match image size
-                marginBottom: "10px"
-              }}>
-                <img
-                  src={pro.image}
-                  alt={pro.title}
-                  style={{
-                    width: "100px",
-                    height: "100px",
-                    objectFit: "contain",
-                    borderRadius: "5px",
-                  }}
-                />
-              </div>
-              <div>
-                <p style={{ fontSize: "10px" }}><strong>{pro.title}</strong></p>
-              </div>
-              <div>
-                <p><strong>Price:</strong> ${pro.price}</p>
-              </div>
-            </Link>    
-              <div>
-                {/* Add to Cart button */}
-                <Button variant="contained" onClick={() => handleAddToCart(pro)} 
-                  style={{
-                    padding: "3px 8px",
-                    backgroundColor: "black",
-                    color: "white",
-                    border: "none",
-                    borderRadius: "4px",
-                    cursor: "pointer",
-                  }}>Add to Cart</Button>
-              </div>
+            <div
+              key={pro.id}
+              className="flex flex-col items-center p-4 bg-white border rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300"
+            >
+              <Link href={prod_url} className="text-center">
+                <div className="flex justify-center items-center mb-4 w-full h-24">
+                  <img
+                    src={pro.image}
+                    alt={pro.title}
+                    className="w-24 h-24 object-contain rounded-lg"
+                  />
+                </div>
+                <p className="text-sm font-semibold">{pro.title}</p>
+                <p className="text-md mt-2 font-bold">${pro.price}</p>
+              </Link>
+              {/* Add to Cart button */}
+              <button
+                onClick={() => handleAddToCart(pro)}
+                className="mt-3 py-1 px-4 bg-black text-white rounded-lg hover:bg-gray-800"
+              >
+                Add to Cart
+              </button>
             </div>
           );
         })}
       </div>
-
-      {/* Optionally, you can display the cart below the products */}
-      {/* <div style={{ marginTop: '40px' }}>
-        <h2>Your Cart ({cart.length} items)</h2>
-        {cart.length > 0 ? (
-          <ul>
-            {cart.map((item, index) => (
-              <li key={index}>{item.title} - ${item.price}</li>
-            ))}
-          </ul>
-        ) : (
-          <p>Your cart is empty.</p>
-        )}
-      </div> */}
     </main>
   );
 }
