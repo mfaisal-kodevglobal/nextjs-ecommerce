@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
+
 export default function About3() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]); // State to keep track of cart items
