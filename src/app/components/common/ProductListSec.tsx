@@ -3,7 +3,7 @@ import React from "react";
 import * as motion from "framer-motion/client";
 import Link from "next/link";
 import ProductCard from "./ProductCard";
-
+import { useProductData } from "../Context/RootContext";
 
 type ProductListSecProps = {
   title:string;
@@ -12,9 +12,10 @@ type ProductListSecProps = {
 }
 
 const ProductListSec = ({title, data, viewAllLink}:ProductListSecProps) => {
+  //const productData   = useProductData();     //wrong and  not working.
+  const { productData } = useProductData();    // Destructure productData from the context
   return(
     <>
-      
       <section className="max-w-frame mx-auto text-center m-10">
       <motion.h2
         initial={{ y: "100px", opacity: 0 }}
@@ -31,7 +32,7 @@ const ProductListSec = ({title, data, viewAllLink}:ProductListSecProps) => {
         transition={{ delay: 0.6, duration: 0.6 }}
       >
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-6 w-full">
-            {data.map((product) => (
+            {productData.map((product) => (
                 <ProductCard key={product.id} data={product} />
             ))}
         </div>  

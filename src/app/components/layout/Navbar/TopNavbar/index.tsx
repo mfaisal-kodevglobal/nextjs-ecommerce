@@ -1,33 +1,33 @@
 'use client'
-import { useContextData } from "@/app/components/Context/RootContext"
+import { useProductData } from "@/app/components/Context/RootContext"
 import Link from "next/link"
 
 export default function Navbar() {
-  const contextData = useContextData();
-
-  // Check if contextData is available before using it
-  if (!contextData) {
+  const { productData } = useProductData();  // Destructure productData from the context
+console.log('productData in navBar',productData)
+  // Check if productData is available before using it
+  if (!productData || productData.length === 0) {
     return (
       <div>
-        <p>Loading...</p> {/* Fallback UI while context data is not available */}
+        <p>Loading...</p> {/* Fallback UI while productData is not available */}
       </div>
     );
   }
 
-  console.log('contextData->', contextData);
+  console.log('useProductData->', productData);
 
   return (
     <>
       <nav className="flex justify-end items-center space-x-6 text-gray-800 dark:text-white bg-blue-100 p-4 shadow-md rounded-lg">
-      <span>
+        <span>
           <Link href="/" className="hover:text-indigo-500 transition-all duration-300 ease-in-out px-3 py-2 rounded-md">
-            ContextData=[ {contextData.name} | {contextData.email} | {contextData.phone}]
+          ProductData=[ {productData[0]?.id} | {productData[0]?.title} ] {/* Example product info */}
           </Link>
         </span>
 
         <span>
           <Link href="/" className="hover:text-indigo-500 transition-all duration-300 ease-in-out px-3 py-2 rounded-md">
-            Home {contextData.name}
+            Home
           </Link>
         </span>
 

@@ -1,25 +1,31 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useProductData } from '../components/Context/RootContext';
 
 
 export default function About3() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]); // State to keep track of cart items
+  const { productData, setSelectedProduct } = useProductData();
+
+  const handleProductClick = (product) => {
+    setSelectedProduct(product); // Set the selected product in the context
+  };
 
   useEffect(() => {
     // Fetch the data once the component mounts
-    fetch('https://fakestoreapi.com/products?sort=asc')
-      .then((res) => res.json())
-      .then((json) => {
-        setProducts(json);  // Update the state with the fetched products
-      })
-      .catch((error) => {
-        console.error("Error fetching products:", error);
-      });
+    // fetch('https://fakestoreapi.com/products?sort=asc')
+    //   .then((res) => res.json())
+    //   .then((json) => {
+    //     setProducts(json);  // Update the state with the fetched products
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error fetching products:", error);
+    //   });
   }, []);
 
-  if (!products.length) {
+  if (!productData.length) {
     return <div>Loading...</div>;
   }
 
@@ -43,7 +49,7 @@ export default function About3() {
 
       {/* Product Listing */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 mt-6 w-full">
-        {products.map((pro) => {
+        {productData.map((pro) => {
           const prod_url = `${process.env.NEXT_PUBLIC_BASE_URL}/about4/${pro.id}`;
 
           return (
@@ -51,7 +57,7 @@ export default function About3() {
               key={pro.id}
               className="flex flex-col items-center p-4 bg-white border rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300"
             >
-              <Link href={prod_url} className="text-center">
+              <Link href={prod_url} className="text-center" onClick={() => handleProductClick(pro)}>
                 <div className="flex justify-center items-center mb-4 w-full h-24">
                   <img
                     src={pro.image}
@@ -71,6 +77,7 @@ export default function About3() {
               </button>
             </div>
           );
+
         })}
       </div>
     </main>

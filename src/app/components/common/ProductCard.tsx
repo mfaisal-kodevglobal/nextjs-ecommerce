@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Product } from "@/app/types/product.types";
+import { useProductData } from '../Context/RootContext';
 
 type ProductCardProps = {
   data: Product;
@@ -9,12 +10,18 @@ type ProductCardProps = {
 
 const ProductCard = ({ data }: ProductCardProps) => {
   const prod_url = `${process.env.NEXT_PUBLIC_BASE_URL}/about4/${data.id}`;
+  const { productData, setSelectedProduct } = useProductData();
+
+  const handleProductClick = (product:Product) => {
+    setSelectedProduct(product); // Set the selected product in the context
+  };
   return (
     
     <Link
       key={data.id}
       href={prod_url}
       className=" mb-4 shadow-2xl flex flex-col items-start w-full max-w-xs lg:max-w-sm xl:max-w-md mx-auto bg-white rounded-xl  overflow-hidden transition-transform transform hover:scale-105"
+      onClick={() => handleProductClick(data)}
     >
       {/* Product Image Container */}
       <div className="relative w-full h-64 bg-[#F9F9F9] rounded-t-xl overflow-hidden">
