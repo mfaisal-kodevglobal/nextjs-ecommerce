@@ -11,25 +11,23 @@ function classNames(...classes) {
 export default function About4({params}) {
     const { selectedProduct } = useProductData(); // Get the selected product from context
 
-    if (!selectedProduct) {
-        return <div>Loading...</div>; // Show loading if selectedProduct is not yet available
-    }
-    
+    //const productid = params.productid;
+    //const [product, setproduct] = useState(null);
 
-    const productid = params.productid;
-    const [product, setproduct] = useState(null);
-
-    useEffect(()=>{
+    //useEffect(()=>{
         // fetch("https://fakestoreapi.com/products/"+productid).then((res) => res.json()).then((json) => {
         //     setproduct(json);
         // }).catch((error) => {console.error("Error fetching single product", error)});
-        setproduct(selectedProduct);
-    },[]);
+        //setproduct(selectedProduct);
+    //},[]);
    
 
     // if (!product) {
     //     return <div>Loading...</div>;
     // }
+    if (!selectedProduct) {
+        return <div>Loading...</div>; // Show loading if selectedProduct is not yet available
+    }
     
     return (
         <div>
