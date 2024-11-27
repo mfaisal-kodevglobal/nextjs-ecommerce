@@ -39,7 +39,8 @@ export const RootContext = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     // Fetch the data once the component mounts
-    fetch('https://fakestoreapi.com/products')
+    const products_url = `${process.env.NEXT_PUBLIC_BASE_URL}/products`;
+    fetch(products_url)
       .then(res => res.json())
       .then(json => {
         setProductData(json); // Update the state with the fetched products
