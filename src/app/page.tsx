@@ -18,24 +18,24 @@ export default function Home() {
   // Define state to hold comment data and initialize as an empty array of Comments
   const [commentData, setCommentData] = useState<Comment[]>([]);
 
-  // useEffect(() => {
-  //   // Fetch comment data once the component mounts
-  //   fetch('http://localhost:3000/comments')
-  //     .then(res => res.json())
-  //     .then((json: Comment[]) => {
-  //       setCommentData(json); // Update the state with the fetched comments
-  //     })
-  //     .catch(error => {
-  //       console.error("Error fetching comments:", error);
-  //     });
-  // }, []);
+  useEffect(() => {
+    // Fetch comment data once the component mounts
+    fetch('http://localhost:3000/comments')
+      .then(res => res.json())
+      .then((json: Comment[]) => {
+        setCommentData(json); // Update the state with the fetched comments
+      })
+      .catch(error => {
+        console.error("Error fetching comments:", error);
+      });
+  }, []);
 
   return (
     <>
       <Header />
       
       {/* Display comments if they exist */}
-      {/* <section>
+      <section>
         <h2>Comments:</h2>
         <div>
           {commentData.length > 0 ? (
@@ -46,7 +46,7 @@ export default function Home() {
             <p>No comments available</p>
           )}
         </div>
-      </section> */}
+      </section>
 
       <Brands />
       
