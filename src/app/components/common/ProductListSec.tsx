@@ -31,6 +31,7 @@ const ProductListSec = ({title, data, viewAllLink}:ProductListSecProps) => {
         viewport={{ once: true }}
         transition={{ delay: 0.6, duration: 0.6 }}
       >
+        
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-6 w-full">
             {productData.map((product) => (
                 <ProductCard key={product.id} data={product} />

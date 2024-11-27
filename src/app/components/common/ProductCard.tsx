@@ -7,7 +7,7 @@ import { useProductData } from '../Context/RootContext';
 type ProductCardProps = {
   data: Product;
 };
-
+   
 const ProductCard = ({ data }: ProductCardProps) => {
   const prod_url = `${process.env.NEXT_PUBLIC_BASE_URL}/about4/${data.id}`;
   const { productData, setSelectedProduct } = useProductData();
