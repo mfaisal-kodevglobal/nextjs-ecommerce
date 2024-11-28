@@ -5,6 +5,7 @@ import Header from "./components/homepage/Header";
 import Brands from "./components/homepage/Brands";
 import { Product } from "./types/product.types";
 import { useProductData } from "./components/Context/RootContext";
+import dbConnect from "@/lib/dbConnect";
 
 // Define the Comment type to structure the comment data
 interface Comment {
@@ -13,6 +14,9 @@ interface Comment {
 }
 
 export default function Home() {
+
+  console.log('dbConnect', dbConnect());
+  
   const { productData } = useProductData(); // Destructure productData from the context
   
   // Define state to hold comment data and initialize as an empty array of Comments
@@ -45,6 +49,7 @@ export default function Home() {
           ) : (
             <p>No comments available</p>
           )}
+          
         </div>
       </section>
 

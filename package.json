@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "'": "file:emotion/core@10.1.1'",
+    "mongoose": "^8.4.0",
     "@mui/material": "^6.1.8",
     "embla-carousel-react": "^8.5.1",
     "framer-motion": "^11.11.17",

@@ -51,7 +51,7 @@ export const RootContext = ({ children }: { children: ReactNode }) => {
   }, []); 
 
   return (
-    // <DataContext.Provider value={{ productData, setProductData }}>
+      //<DataContext.Provider value={{ productData, setProductData }}>
     
        <DataContext.Provider value={{ productData, setProductData, selectedProduct, setSelectedProduct }}>
         {children}
