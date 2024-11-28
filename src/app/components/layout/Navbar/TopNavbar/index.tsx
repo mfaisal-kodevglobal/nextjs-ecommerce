@@ -6,13 +6,13 @@ export default function Navbar() {
   const { productData } = useProductData();  // Destructure productData from the context
 console.log('productData in navBar',productData)
   // Check if productData is available before using it
-  if (!productData || productData.length === 0) {
-    return (
-      <div>
-        <p>Loading...</p> {/* Fallback UI while productData is not available */}
-      </div>
-    );
-  }
+  // if (!productData || productData.length === 0) {
+  //   return (
+  //     <div>
+  //       <p>Loading...</p> {/* Fallback UI while productData is not available */}
+  //     </div>
+  //   );
+  // }
 
   console.log('useProductData->', productData);
 
