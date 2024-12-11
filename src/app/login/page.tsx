@@ -28,10 +28,7 @@ export default function LoginPage() {
   const handleLogin = async () => {
     try {
       setLoading(true);
-      const response = await axios.post("login_process", user,{ 
-        headers: {
-         'Content-Type': 'application/json',
-      }})
+      const response = await axios.post("login_process", user)
 
       if(response.status == 200){
         setUserData(response.data.token);
