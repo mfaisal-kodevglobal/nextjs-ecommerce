@@ -14,7 +14,7 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const [userData, setUserData] = useState<any>(false);
-  const [loginMsg, setLoginMsg] = useState<string>('');
+  const [loginMsg, setLoginMsg] = useState<string>("");
 
   //const router = useRouter();
 
@@ -37,7 +37,7 @@ export default function LoginPage() {
         toast.success("Login successful!");
       }else{
         setUserData([]);
-        setLoginMsg('Login Failed! Check login details...'+response.data.message);
+        setLoginMsg("Login Failed! Check login details..."+response.data.message);
         console.log("Login Failed! Check login details...:",response);
         //toast.success("Login Failed! Check login details...");
       }
@@ -88,12 +88,12 @@ export default function LoginPage() {
         {loading ? "Logging In..." : "Login"}
       </button>
       <div className="mt-4">
-        <Link href="/signup">Don't have an account? Sign Up</Link>
+        <Link href="/signup">Do not have an account? Sign Up</Link>
       </div>
       <div>
         <p>Login Status : {loginMsg}</p>
         {/* {
-          (!userData) ? 'No any user Login' : userData.map((user:any)=> {
+          (!userData) ? "No any user Login" : userData.map((user:any)=> {
             <p>{user.name}</p>
           })
         } */}
