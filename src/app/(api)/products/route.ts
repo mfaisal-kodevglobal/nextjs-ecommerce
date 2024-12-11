@@ -18,7 +18,31 @@ export async function GET(req: NextRequest) {
     await dbConnect();
 
     // Query the products collection
-    const products = await Product.find({}).exec(); // Fetch all products
+    const products = await Product.find({})
+            //.skip(0) 
+            //.limit(1) 
+            .sort({ title: 1 })
+            .exec(); 
+            // Fetch all products
+
+            await Product.findOneAndUpdate(
+                {
+                  id: 2 // search query
+                },
+                {
+                  id: 200 // field:values to update
+                },
+                {
+                  new: true, // return updated doc
+                  runValidators: true // validate before update
+                }
+              )
+                .then((doc) => {
+                  console.log(doc);
+                })
+                .catch((err) => {
+                  console.error(err);
+                });
 
     // Return the products as JSON
     return new NextResponse(JSON.stringify(products), {
